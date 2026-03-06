@@ -2,66 +2,43 @@
 
 void GenerateWord(char *Word){
 
-    char WordData[][50] = {
-    "APPLE",
-    "HOUSE",
-    "WATER",
-    "GREEN",
-    "MUSIC",
-    "BANANA",
-    "ORANGE",
-    "GARDEN",
-    "WINDOW",
-    "COMPUTER",
-    "KEYBOARD",
-    "MOUSE",
-    "SCREEN",
-    "PRINTER",
-    "LAPTOP",
-    "TABLET",
-    "PHONE",
-    "INTERNET",
-    "SERVER",
-    "PROGRAM",
-    "LANGUAGE",
-    "VARIABLE",
-    "FUNCTION",
-    "COMPILER",
-    "DEBUGGER",
-    "SOFTWARE",
-    "HARDWARE",
-    "NETWORK",
-    "DATABASE",
-    "STORAGE",
-    "BACKUP",
-    "SECURITY",
-    "PASSWORD",
-    "WEBSITE",
-    "BROWSER",
-    "DOWNLOAD",
-    "UPLOAD",
-    "CLOUD",
-    "ROUTER",
-    "SWITCH",
-    "FIREWALL",
-    "ENCRYPTION",
-    "ROBOT",
-    "ANDROID",
-    "SYSTEM",
-    "PROCESS",
-    "THREAD",
-    "MEMORY",
-    "BUFFER",
-    "POINTER",
-    "ARRAY",
-    "STRUCTURE",
-    "ALGORITHM"
-};
-    
-    int Limit = sizeof(WordData)/sizeof(WordData[0]);
-    int RandomNumber = rand() % Limit;
+    FILE *File = fopen("words.txt", "r");
 
-    strcpy(Word, WordData[RandomNumber]);
+    if(File == NULL){
+        printf("Error opening file!\n");
+        exit(1);
+    }
+
+    int Count = 0;
+    char Buffer[1000];
+
+    while(fgets(Buffer, sizeof(Buffer), File)){
+        Count++;
+    }
+
+    int RandomNumber = rand() % Count;
+
+    Count = 0;
+
+    rewind(File);
+
+    for(int i = 0; i <= RandomNumber; i++){
+        fgets(Buffer, sizeof(Buffer), File);
+    }
+
+    while(Buffer[Count] != '\0'){
+
+        if(Buffer[Count] == '\n'){
+            Buffer[Count] = '\0';
+            break;
+        }
+
+        Count++;
+    }
+
+
+    strcpy(Word, Buffer);
+    fclose(File);
 }
 
 void Punishment(int Num) {
