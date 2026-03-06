@@ -9,7 +9,7 @@ It's a classic Hangman game. The computer picks a word, and you have to guess it
 
 Lives: 6
 
-Word List: Computer and technology-themed words.
+Word List: Initially there are 495 words in the words.txt file, but you can modify it or add any words you desire to play with.
 
 --Português--
 
@@ -20,4 +20,4 @@ Sobre o Jogo:
 
 Vidas: 6
 
-Lista de Palavras: Palavras relacionadas a computadores e tecnologia.
+Lista de Palavras: Inicialmente existem 495 palavras no arquivo words.txt, mas você pode modificar ou adicionar palavras que você deseja jogar com.
