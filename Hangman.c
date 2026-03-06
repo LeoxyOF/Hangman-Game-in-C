@@ -26,16 +26,7 @@ void GenerateWord(char *Word){
         fgets(Buffer, sizeof(Buffer), File);
     }
 
-    while(Buffer[Count] != '\0'){
-
-        if(Buffer[Count] == '\n'){
-            Buffer[Count] = '\0';
-            break;
-        }
-
-        Count++;
-    }
-
+    Buffer[strcspn(Buffer, "\r\n")] = '\0';
 
     strcpy(Word, Buffer);
     fclose(File);
